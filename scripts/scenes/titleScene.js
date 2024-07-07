@@ -4,7 +4,7 @@ export default class titleScene extends Phaser.Scene {
     }
 
     preload() {
-        // Load assets like background images, buttons, etc.
+        // IMAGES and AUDIO
         this.load.image('background', './assets/images/bgv.png');
         this.load.image('logo', './assets/images/BBGLogo.png');
         this.load.image('startButton', './assets/buttons/start_BTN.png');
@@ -17,11 +17,10 @@ export default class titleScene extends Phaser.Scene {
 
     create() {
         this.sound.stopAll();
-        // Add background image
         this.background = this.add.image(0, 0, 'background').setOrigin(0, 0);
         this.background.setDisplaySize(this.cameras.main.width, this.cameras.main.height);
 
-        // Logo Coordinates and Animation
+        // Logo
         this.logo = this.add.image(400, 350, 'logo');
         this.logo.setOrigin(0.5);
         this.logo.setScale(2);
@@ -62,7 +61,7 @@ export default class titleScene extends Phaser.Scene {
             startButton.clearTint();
         });
 
-        // CREDIT BUTTON
+        // CREDITS BUTTON
         const creditButton = this.add.image(50, 50, 'creditButton');
         creditButton.setOrigin(0.5);
         creditButton.setScale(0.4);
@@ -100,7 +99,7 @@ export default class titleScene extends Phaser.Scene {
             quitButton.clearTint();
         });
 
-        // Store reference to gameScene
+        
         this.gameScene = this.scene.get('gameScene');
     }
 

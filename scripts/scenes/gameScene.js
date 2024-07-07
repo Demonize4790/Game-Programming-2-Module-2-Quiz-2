@@ -9,7 +9,7 @@ export default class gameScene extends Phaser.Scene {
     }
 
     preload() {
-        // Load images
+        //IMAGES
         this.load.image('gSBackground', 'assets/images/bgv.png');
         this.load.image('player', 'assets/images/spaceship.png');
         this.load.image('projectile', 'assets/images/bullets2.png');
@@ -17,7 +17,7 @@ export default class gameScene extends Phaser.Scene {
         this.load.image('obstacleTwo', 'assets/images/alien2.png');  
         this.load.image('obstacleThree', 'assets/images/alien1.png');  
 
-        // Load audio
+        //AUDIO
         this.load.audio('gameMusic', 'assets/audio/music/gameplayMusic.mp3');
         this.load.audio('shotSound', 'assets/audio/sound-effect/bullet2.mp3');
         this.load.audio('hitSound', 'assets/audio/sound-effect/slap.mp3');
@@ -34,21 +34,21 @@ export default class gameScene extends Phaser.Scene {
         this.gSBackground.setDisplaySize(this.cameras.main.width, this.cameras.main.height);
     
         // SHOOT
-        this.shot = this.sound.add('shotSound', { volume: 0.4 });
-        this.hit = this.sound.add('hitSound', { volume: 0.4}); 
-    
-        this.player = this.physics.add.sprite(400, 1100, 'player').setCollideWorldBounds(true);
+            this.shot = this.sound.add('shotSound', { volume: 0.4 });
+            this.hit = this.sound.add('hitSound', { volume: 0.4}); 
+        
+            this.player = this.physics.add.sprite(400, 1100, 'player').setCollideWorldBounds(true);
 
         //PLAYER MOVEMENT
-        this.cursors = this.input.keyboard.createCursorKeys();
-        this.shootKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+            this.cursors = this.input.keyboard.createCursorKeys();
+            this.shootKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
     
         // BULLET
-        this.projectiles = this.physics.add.group({
-            classType: Phaser.Physics.Arcade.Image,
-            defaultKey: 'projectile',
-            maxSize: -1
-        });
+            this.projectiles = this.physics.add.group({
+                classType: Phaser.Physics.Arcade.Image,
+                defaultKey: 'projectile',
+                maxSize: -1
+            });
     
 
         this.obstacles = this.physics.add.group();
@@ -56,17 +56,17 @@ export default class gameScene extends Phaser.Scene {
         this.physics.add.collider(this.player, this.obstacles, this.gameOver, null, this);
     
         // SCORE + TIME
-        this.scoreText = this.add.text(10, 10, 'Score: 0 sec', { fontSize: '50px', fill: '#ffef' });
-        this.timeText = this.add.text(10, 40, 'Time: 0 sec', { fontSize: '50px', fill: '#ffef' });
+            this.scoreText = this.add.text(10, 10, 'Score: 0 sec', { fontSize: '50px', fill: '#ffef' });
+            this.timeText = this.add.text(10, 40, 'Time: 0 sec', { fontSize: '50px', fill: '#ffef' });
     
         // Timed events
-        this.spawnObstacleTimer = this.time.addEvent({
-            delay: 400, 
-            callback: this.spawnObstacle,
-            callbackScope: this,
-            loop: true
-        });
-    
+            this.spawnObstacleTimer = this.time.addEvent({
+                delay: 400, 
+                callback: this.spawnObstacle,
+                callbackScope: this,
+                loop: true
+            });
+        
         this.updateTimeTimer = this.time.addEvent({
             delay: 700,
             callback: () => {

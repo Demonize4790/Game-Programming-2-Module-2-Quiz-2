@@ -46,7 +46,7 @@ export default class gameoverScene extends Phaser.Scene {
             });
     
         
-        const gameoverSound = this.sound.add('gameoverSound', { volume: 0.7});
+        const gameoverSound = this.sound.add('gameoverSound', { volume: 2});
         gameoverSound.play();
     }
 }
